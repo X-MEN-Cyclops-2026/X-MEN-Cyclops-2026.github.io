@@ -1,0 +1,48 @@
+// Texts and Events
+// Ahnaaf Islam
+// Feb 9, Monday, 2026
+//
+// Extra for Experts:
+// - describe what you did to take this project "above and beyond"
+
+// Global Variable Section 
+let textShade = 255;
+let textScale = 40;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+}
+
+function displayMouse(){
+  // this function will report some
+  // system variables related to mouse
+  // onto the screen via test()
+
+  // mouseX, mouseY -> store current mouse pos
+  //mouseIsPressed -> boolean: button pressed?
+  //  good for mouseHELD events...
+  if(mouseIsPressed){
+
+    textScale = int(random(100, 10)
+  
+  )
+  }
+  
+  
+  
+  
+  
+  textSize(textScale);
+  fill(textShade);
+  text(mouseX + ", " + mouseY + ", " + mouseIsPressed
+    , mouseX, mouseY);
+
+
+}
+
+function draw() {
+  //goal: keep draw() tidy!
+  background(200);
+ displayMouse() ;
+
+}
