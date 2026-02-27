@@ -2,6 +2,9 @@
 // Ahnaaf Islam
 // February 11, Wednesday, 2026
 //
+
+
+//Global Variables
 let x;
 let topcolor, bottomcolor;
 
@@ -13,6 +16,10 @@ function setup() {
 
 
 function sky(){
+  //this lerpColor() loop makes the gradient sky in
+  //the background
+
+
    topcolor = color("red");   // top color is light blue
   bottomcolor = color("blue");    // bottom color is orange
   for (let y = 0; y < height; y++) { // this will allow to make
@@ -27,7 +34,9 @@ function sky(){
 }
 
 
-function spaceship(){ // this is a function helps to built the shapes altogether as one
+function spaceship(){ 
+  // this is a function helps to built the shapes altogether as one
+  // to make a spaceship
   fill("blue");
   circle(mouseX, mouseY, 70, 250, 90); // the mouseX and mouseY are the variables which allows the user to move the this object around
   fill("teal");
@@ -40,10 +49,9 @@ function spaceship(){ // this is a function helps to built the shapes altogether
 }
 
 
-
-
-function pyramid(){ // this function allows the program to create the pyramids in the landscape
-  noStroke(); // this variable
+function pyramid(){ 
+  // this function allows the program to create the pyramids in the landscape
+  noStroke(); 
   fill("brown");
   triangle(630, 975, 458, 700, 786, 900);
   triangle(30, 975, 458, 700, 786, 900);
@@ -55,14 +63,9 @@ function pyramid(){ // this function allows the program to create the pyramids i
 
 
 function land(){
+  //this function  is controlling the making of the ground
   fill("lightBrown");
   rect(0, 900, 1955, 900);
-}
-
-
-function grass(){
-  fill("Light");
-  rect(0, 880, 1955, 400);
 }
 
 
@@ -71,12 +74,14 @@ function moon(){
   circle(1500, 150, 100);
 }
 
+
 function alien(){
-   // movement
-  if (keyIsDown(65)) {   // A key
+   // This function allows the alien to move from side to side
+
+  if (keyIsDown(65)) {   // A key moves Alien to the left
     x -= 5;
   }
-  if (keyIsDown(68)) {   // D key
+  if (keyIsDown(68)) {   // D key moves Alien to the right
     x += 5;
   }
 
@@ -100,14 +105,15 @@ function draw() { // This function allows to user's code to run
   moon();
   pyramid();
   land();
-   sky();
-   alien();
-   spaceship();
+  sky();
+  alien();
+  spaceship();
 
 
-  textAlign(RIGHT, BOTTOM);
-  textSize(38);
-  text("Ahnaaf", width-10, height-10);a
+  textAlign(RIGHT, BOTTOM); // this controls the alignment of the my name in the canvas
+  textSize(38); // this controls the text size of my name
+  text("Ahnaaf", width-10, height-10); // this controls the padding of the text and the text itself
+
 
   }
 
