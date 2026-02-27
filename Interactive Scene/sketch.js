@@ -23,20 +23,20 @@ function sky(){
 
 function spaceship(){ // this is a function helps to built the shapes altogether as one 
   fill("blue");
-  circle(mouseX, mouseY, 30, 450, 50); // the mouseX and mouseY are the variables which allows the user to move the this object around
+  circle(mouseX, mouseY, 50); // the mouseX and mouseY are the variables which allows the user to move the this object around
   fill("teal");
-   ellipse(mouseX, mouseY, 60, 20, 90, 20, 6);   // by moving their mouse.
-   fill("lightBlue");
-   ellipse(mouseX, mouseY, 60, 10, 90, 20, 0); //As we can see the same variables are at the shapes which allows it to move all at the same time.
+   ellipse(mouseX, mouseY, 60, 20);   // by moving their mouse.
+   fill("teal");
+   ellipse(mouseX, mouseY, 60, 20); //As we can see the same variables are at the shapes which allows it to move all at the same time.
    fill("black");
-   ellipse(mouseX, mouseY, 30, 10, 10, 10, 4);  
+   ellipse(mouseX, mouseY, 30, 10);  
   
 }
 
 
 function pyramid(){ // this function allows the program to create the pyramids in the landscape
   noStroke(); // this variable 
-  fill("brown");
+  fill(181, 101, 29);
   triangle(630, 975, 458, 700, 786, 900);
   triangle(30, 975, 458, 700, 786, 900);
   triangle(100, 975, 858, 600, 786, 900);
@@ -46,14 +46,11 @@ function pyramid(){ // this function allows the program to create the pyramids i
 }
 
 function land(){
-  fill("lightBrown");
+  fill(34, 139, 34); 
   rect(0, 900, 1955, 900);
 }
 
-function grass(){
-  fill("Light");
-  rect(0, 880, 1955, 400); 
-}
+
 
 function moon(){
   fill("white")
@@ -61,17 +58,12 @@ function moon(){
 }
 
 
-  
-
-
-
 function draw() { // This function allows to user's code to run 
+  sky();
   moon();
   pyramid();
-  spaceship();
   land();
   spaceship();
-   sky();
 
   textAlign(RIGHT, BOTTOM);
   textSize(38);
