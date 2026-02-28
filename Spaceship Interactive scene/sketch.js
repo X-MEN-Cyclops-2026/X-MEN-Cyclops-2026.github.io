@@ -1,13 +1,12 @@
 // Interactive Scene
 // Ahnaaf Islam
 // February 11, Wednesday, 2026
-//
 
 
 //Global Variables
 let x;
 let topcolor, bottomcolor;
-
+let moonY = 150; //This variable allows to control the disappearance of the moon
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -20,8 +19,8 @@ function sky(){
   //the background
 
 
-   topcolor = color("red");   // top color is light blue
-  bottomcolor = color("blue");    // bottom color is orange
+   topcolor = color("purple");   // top color is light blue
+  bottomcolor = color("brown");    // bottom color is orange
   for (let y = 0; y < height; y++) { // this will allow to make
     let n = map(y, 0, height, 0, 1);
 
@@ -52,7 +51,7 @@ function spaceship(){
 function pyramid(){ 
   // this function allows the program to create the pyramids in the landscape
   noStroke(); 
-  fill("brown");
+  fill(211, 78, 55);
   triangle(630, 975, 458, 700, 786, 900);
   triangle(30, 975, 458, 700, 786, 900);
   triangle(100, 975, 858, 600, 786, 900);
@@ -71,11 +70,13 @@ function land(){
 
 function moon(){
   fill("white")
-  circle(1500, 150, 100);
-}
+  circle(1500, moonY, 100);
+  }
+
 
 
 function alien(){
+  noStroke();
    // This function allows the alien to move from side to side
 
   if (keyIsDown(65)) {   // A key moves Alien to the left
@@ -113,7 +114,21 @@ function draw() { // This function allows to user's code to run
   textAlign(RIGHT, BOTTOM); // this controls the alignment of the my name in the canvas
   textSize(38); // this controls the text size of my name
   text("Ahnaaf", width-10, height-10); // this controls the padding of the text and the text itself
+  
 
-
+  // These if-statements allow the night and day and differences as the spaceship
+  // comes  close to the ground becoming day and going up makes it night
+  if( mouseY < 500){
+    blendMode(MULTIPLY);
+    noStroke();
+    fill(0, 220, 220, 200);
+    rect(0, 0, width, height);
+    blendMode(BLEND);
+    moonY = 150;
   }
+  if(mouseY > 500){
+    moonY += 650;
+  }
+
+}
 
