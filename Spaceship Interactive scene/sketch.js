@@ -37,13 +37,13 @@ function spaceship(){
   // this is a function helps to built the shapes altogether as one
   // to make a spaceship
   fill("blue");
-  circle(mouseX, mouseY, 70, 250, 90); // the mouseX and mouseY are the variables which allows the user to move the this object around
+  circle(mouseX, mouseY, 70,); // the mouseX and mouseY are the variables which allows the user to move the this object around
   fill("teal");
-   ellipse(mouseX, mouseY, 120, 20, 90, 20, 6);   // by moving their mouse.
+   ellipse(mouseX, mouseY, 120, 20);   // by moving their mouse.
    fill("lightBlue");
-   ellipse(mouseX, mouseY, 80, 10, 90, 20, 0); //As we can see the same variables are at the shapes which allows it to move all at the same time.
+   ellipse(mouseX, mouseY, 80, 10); //As we can see the same variables are at the shapes which allows it to move all at the same time.
    fill("black");
-   ellipse(mouseX, mouseY, 60, 10, 10, 10, 4);  
+   ellipse(mouseX, mouseY, 60, 10);  
  
 }
 
@@ -88,16 +88,16 @@ function alien(){
 
   // alien body
   fill(0, 255, 0);
-  ellipse(x, 1000, 40, 50);
+  ellipse(x, 900, 40, 50);
 
   // eyes
   fill(255);
-  ellipse(x - 8, 990, 8, 12);
-  ellipse(x + 8, 990, 8, 12);
+  ellipse(x - 8, 890, 8, 12);
+  ellipse(x + 8, 890, 8, 12);
 
   fill(0);
-  ellipse(x - 8, 990, 4, 6);
-  ellipse(x + 8, 990, 4, 6);
+  ellipse(x - 8, 890, 4, 6);
+  ellipse(x + 8, 890, 4, 6);
 }
 
 
