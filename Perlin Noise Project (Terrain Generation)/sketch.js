@@ -1,12 +1,16 @@
-// Terrain Starter
+// Perlin Noise (Terrain Generation)
 // Ahnaaf Islam
 // March 4, Wednesday, 2026 
+var inc = 0.01;
+let start = 0.09;
 let rectWidth = 15;
+frameRate(0.5);
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   fill(0);
  // noLoop(); //can leave this for now.
+
 }
 
 function generateTerrain(){
@@ -16,7 +20,7 @@ function generateTerrain(){
   for(let x = 0; x < width; x+=rectWidth){
     //generate random() (negative) height
     //eventually replace this with using noise()
-    let rectHeight = random(0, height*6.95);
+    let rectHeight = random(0, height*0.15);
     rect(x,height,rectWidth,-rectHeight);
   }
 }
@@ -43,5 +47,5 @@ function draw() {
   let y = noiseLevel * noise(nx);
 
   // Draw the line.
-  line(x, y, x, height);
+  rect(x, y, 10, height);
 }
