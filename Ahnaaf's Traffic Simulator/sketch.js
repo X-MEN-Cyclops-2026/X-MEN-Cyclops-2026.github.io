@@ -130,7 +130,7 @@ action(){
 // Traffic Signal Light //
 class TrafficLight {
   constructor() {
-    this.isRed = false;
+    this.isRed = false; //this sets up the red light or green light boolean
     this.timer = 0;
   }
 
