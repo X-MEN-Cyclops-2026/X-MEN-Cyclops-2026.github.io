@@ -64,7 +64,7 @@ class Vehicle { // this function allows to spawn cars in the road
     noStroke();
 
   // Vehicle: CAR //
-  if(this.type === 0){
+  if(this.type === 0){ 
     fill(this.color);
     rect(0, 0, 50, 25, 5);
 
@@ -76,9 +76,9 @@ class Vehicle { // this function allows to spawn cars in the road
     ellipse(15, 12, 10);
 }
 
-  // Vehicle: Truck //
+  // Vehicle: Truck // 
   else{
-    fill(this.color);
+    fill(this.color);  
     rect(-10, 0, 60, 30);
 
     fill(100);
@@ -93,7 +93,7 @@ class Vehicle { // this function allows to spawn cars in the road
   pop();
  }
 move(){
-  if(lights.isRed) return;
+  if(lights.isRed) return; // this code allows 
 
   this.x += this.xSpeed;
 
