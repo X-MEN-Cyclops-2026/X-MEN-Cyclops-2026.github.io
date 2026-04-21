@@ -3,7 +3,7 @@
 // April 18, Saturday, 2026
 //       
 
-let grid = [
+let grid = [ // This is an array
   [0,   0,   0,   255,  0,  255],
   [255, 0, 255,   0,    255,  0],
   [0,   0,   0,   0,    0,  255],
@@ -12,7 +12,7 @@ let grid = [
 ];
 let rows = grid.length;
 let cols = grid[0].length;
-let tileSize = 60;
+let tileSize = 100;
 
 function setup() {
   createCanvas(cols*tileSize, rows*tileSize);
