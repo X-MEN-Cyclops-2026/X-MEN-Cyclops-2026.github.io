@@ -72,3 +72,14 @@ function getCurrentY(){
   let constrainedY = constrain(mouseY, 0, height-1);
   return floor(constrainedY / tileSize);
 }
+
+function randomizeGrid() {  // this functions allow to randomize the grid squares 
+  for (let y = 0; y < rows; y++) {
+    for (let x = 0; x < cols; x++) {
+      grid[y][x] = random([0, 255]); // this helps to pick black or white randomly
+    }
+  }
+  // this code forces at least one square to be different
+  grid[0][0] = 0;
+  grid[0][1] = 255;
+}
