@@ -3,7 +3,7 @@
 // April 18, Saturday, 2026
 //       
 
-let grid = [ // This is an array
+let grid = [ // This is an array for the grid
   [0,   0,   0,   255,  0,  255],
   [255, 0, 255,   0,    255,  0],
   [0,   0,   0,   0,    0,  255],
@@ -12,20 +12,77 @@ let grid = [ // This is an array
 ];
 let rows = grid.length;
 let cols = grid[0].length;
-let tileSize = 100;
+let tileSize = 250;
+let win = false;
 
 function setup() {
-  createCanvas(cols*tileSize, rows*tileSize);
+  createCanvas(windowWidth, windowWidth);
+  randomizeGrid();
 }
 
-function draw() {
-  background(220);
+function draw() { // this functions renders the whole grid, and draws the background,
+  background(255); // also adds th     e abilities and special effects to the grid
   renderGrid();
-  textSize(20);
-  fill(255,0,0);
-  text(getCurrentX()+","+getCurrentY(),mouseX, mouseY)
+  blendMode(ADD);
+  canvasEffects();
+  blendMode(BLEND)
+  overlay();
+  textSize(30);
+  fill(0, 255, 255);
+  if (winCondition()) {
+    textSize(150);
+    text("YOU WON", width / 4, height / 3);
+  }
+  //text(getCurrentX() + ", " + getCurrentY(), mouseX, mouseY);
 }
 
+
+
+//Challenges Features 
+function canvasEffects() { // this is a function that provides a special effect
+  noStroke();  // on the looks of the entire puzzle
+  for (let y = 0; y < height; y++) {
+    let mapping = map(y, 0, height, 0, 1);
+    let c = lerpColor(
+      color(20, 0, 40),   // dark purple
+      color(255, 0, 120), // neon pink
+      mapping
+    );
+    stroke(c);
+    line(0, y, width, y);
+  }
+}
+
+function overlay() { // This function allows to see which parts of
+  let x = getCurrentX(); // the puzzle are going to be flipped when its is clicked
+  let y = getCurrentY();
+
+  fill(20, 150, 255, 120);
+
+  // Always draw center
+  rect(x * tileSize, y * tileSize, tileSize);
+
+  // If the shift key is NOT pressed, draw neighbors
+  if (!keyIsDown(SHIFT)) {
+    let directions = [
+      [-1, 0], [1, 0], // left, right
+      [0, -1], [0, 1]  // up, down
+    ];
+
+    for (let [dx, dy] of directions) {
+      let newX = x + dx;
+      let newY = y + dy;
+
+      if (newX >= 0 && newX < cols && newY >= 0 && newY < rows) {
+        rect(newX * tileSize, newY * tileSize, tileSize);
+      }
+    }
+  }
+}
+
+
+
+//Basic Features 
 function flip(x,y){
   if(grid[y][x] === 0) grid[y][x] = 255;
   else grid[y][x] = 0;
@@ -82,4 +139,22 @@ function randomizeGrid() {  // this functions allow to randomize the grid square
   // this code forces at least one square to be different
   grid[0][0] = 0;
   grid[0][1] = 255;
+}
+
+function winCondition() {
+  // this functions alllow the user to know if they have "won" by solving
+  // the puzzle. And it checks all the tiles starting at the top and the corners of all the grid.
+  let wholeGrid = grid[0][0];
+  for (let y = 0; y < rows; y++) { // y: 0 1 2 3 4
+    for (let x = 0; x < cols; x++) { // x: 0 1 2 3 4 5
+      if (grid[y][x] !== wholeGrid) {
+        win = false; // changes to when not all the tiles are black or white
+        return win; // this return allows us to continue making the changes
+      } // necessary when the puzzle is still not solved
+      else {
+        win = true; // This changes to when all the squares/tiles are black or white
+      }
+    }
+  }
+  return win; // This allows to returns the value of win, regardless of True or False
 }
