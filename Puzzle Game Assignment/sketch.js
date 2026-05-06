@@ -1,7 +1,7 @@
 // Puzzle Game Assignment
 // Ahnaaf Islam
 // April 18, Saturday, 2026
-//       
+   
 
 let grid = [ // This is an array for the grid
   [0,   0,   0,   255,  0,  255],
@@ -41,51 +41,57 @@ function overlay() { // This function allows to see which parts of the puzzle ar
 
   fill(250, 50, 250, 120);
 
-  // Always draw center
+  if(keyIsDown(SHIFT)){ // this is code allows the user only to flip squares/tiles when the mouse is over
+    rect(x * tileSize, y * tileSize, tileSize);
+  }
+  else{
+  
+  
   rect(x * tileSize, y * tileSize, tileSize);
-
-  // If the shift key is NOT pressed, draw neighbors
-  if (!keyIsDown(SHIFT)) {
-    let directions = [
-      [-1, 0], [1, 0], // left, right
-      [0, -1], [0, 1]  // up, down
-    ];
-
-    for (let [dx, dy] of directions) {
-      let newX = x + dx;
-      let newY = y + dy;
-
-      if (newX >= 0 && newX < cols && newY >= 0 && newY < rows) {
-        rect(newX * tileSize, newY * tileSize, tileSize);
-      }
-    }
+  
+  
+  if(x-1 >= 0) rect((x-1) * tileSize, y * tileSize, tileSize);  // this code allows to flip the squares/tiles
+    if(x+1 < cols) rect((x+1) * tileSize, y * tileSize, tileSize);  
+   
+     
+      if(y-1 >= 0) rect(x * tileSize, (y-1) * tileSize, tileSize);
+    if(y+1 < rows) rect(x * tileSize, (y+1) * tileSize, tileSize);
+  
+  
   }
 }
-
+  
 
 
 //Basic Features 
-function flip(x,y){ //this function allows the tiles/squares flip their colors which clicked
-  if(grid[y][x] === 0) grid[y][x] = 255;
+function flip(x,y){ //this function allows the tiles/squares flip their colors (black or white) when clicked
+  if(grid[y][x] === 0) grid[y][x] = 255; 
   else grid[y][x] = 0;
 }
 
-function mousePressed(){
-  //only do a flip if mouse is on the Canvas
+function mousePressed(){ //only does a flip if mouse is clicked on the Canvas
   if(mouseX < width && mouseY < height){
     
     let x = getCurrentX();
     let y = getCurrentY();
 
-    // ALWAYS:
-    flip(x, y);
-
-    // flip the cardinal (NSEW) neighbours
-    if(x-1 >= 0) flip(x-1, y);
-    if(y-1 >= 0) flip(x, y-1);
+    rect(x * tileSize, y * tileSize, tileSize);
+    if(keyIsDown(SHIFT)){  
+      flip(x, y);
+        }
+        else{
+          flip(x,y); // IF THEY EXIST
+      //FLIP THE CARDINAL(NSEW) neighbours
+      if(x-1 >= 0) flip(x-1, y);  //this is for the LEFT side
+        if(x+1 < cols) flip(x+1, y);
+     
+       
+        if(y-1 >= 0) flip(x, y-1);  //this is for UP
+      if(y+1 < rows) flip(x, y + 1);
+    }
   }
-  
 }
+    
 
 function renderGrid(){ // this explains the data stored in 2D array (grid) and draw a matrix of squares to reflect it
   for(let y = 0; y < rows; y++){ //y:0 1 2 3 4
